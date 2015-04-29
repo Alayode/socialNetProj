@@ -7,7 +7,7 @@
   <meta content="text/javascript" http-equiv="Content-Script-type">
 
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="stylesheet" href="localhost:3000/styles.css">
 
 <title>
   Mockup-HTML-recent posts
@@ -57,16 +57,10 @@ var app = angular.module('app',[])
 // create a PostCtrl Module
 // dependency inject scope
 app.controller('PostsCtrl', function($scope,$http){
-
-  $http.get('http://localhost:3000/api/posts')
-  .success(function(posts){
-    $scope.posts = posts
-  })
-
-  // the function will run when the addPost button is clicked
-  $scope.addPost =  function() {
-    if ($scope.postBody) {
-      $http.post('api/posts', {
+  // the function will run when the addPost button is clickec
+  $scope.addPost =  function(){
+    if($scope.postBody){
+      $http.post('/api/posts', {
         username:'battlerUshinomiya',
         body: $scope.postBody
       }).success(function(post){
@@ -75,7 +69,7 @@ app.controller('PostsCtrl', function($scope,$http){
       })
     }
   }
-})
+
 
 </script>
 </body>
