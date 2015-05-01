@@ -1,5 +1,5 @@
 /*
-To interact with MongoDB , you will bre using the Mongoose ODM. It's a light layer
+To interact with MongoDB , you will be using the Mongoose ODM. It's a light layer
 on top of the Mongo Driver. to add the npm package, do this:
 
 $ npm install --save mongoose
