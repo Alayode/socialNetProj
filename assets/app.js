@@ -16,6 +16,6 @@ var app = angular.module('app',[])
    }
 
    $http.get('/api/post').success(function(posts){
-     $scope.posts = postsa
+     $scope.posts = posts
    })
  })

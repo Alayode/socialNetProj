@@ -11,15 +11,16 @@ ksamuel.chris@icloud.com
 var express = require('express')
 
 //store the express router object into a variable called router.
-var router  = require('express').Router()
-
-// __dirname is a special Node variable that points to the current file's directory.
-// here __dirname == /controllers/
-router.use(express.static(__dirname + '/../assets'))
+var router  = express.Router()
 
 router.get('/', function(req,res){
   res.sendfile('layouts/posts.html')
 })
+
+// __dirname is a special Node variable that points to the current file's directory.
+// here __dirname == /controllers/
+// router.use(express.static(__dirname + '/../assets'))
+
 
 module.exports = router
 
