@@ -10,17 +10,16 @@
  */
 
 
-var gulp = require('gulp')
-var concat = require('gulp-concat')
-var uglify = require('gulp-uglify')
+var gulp = require('gulp'),
+var fs =require('fs')
 
-gulp.task('js',function (){
-  gulp.src(['ng/module.js','ng/**/*.js'])
-  .pipe(concat('app.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('assets'))
+fs.readdirSync(__dirname + '/gulp').forEach(function(task){
+  require('./gulp/' + task )
 })
 
+gulp.task('build', ['js','css'])
+gulp.task('watch',['watch:js', 'watch:css'])
+gulp.task('dev',['watch', 'dev:server'])
 
 /*
 This is the commmon signature  of all Gulp plug-ins. You load the fgiles with gulp.src

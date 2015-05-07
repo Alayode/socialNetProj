@@ -35,6 +35,9 @@ app.get('/',function(req,res){
   res.sendfile('layouts/posts.html')
 })
 
+app.get('/assets',function(req,res){
+  res.sendfile('assets/app.js')
+})
 
 app.listen(3000, function () {
   console.log('server listening on %d', 3000)
