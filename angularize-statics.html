@@ -1,0 +1,64 @@
+
+
+<!--
+Creating a Static Mockup of the Recent Posts Page The first step is to build a static mockup page with HTML and Bootstrap (http:// getbootstrap.com) for styling. Create a new directory for your application and create a file called posts.html with the following HTML:
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+
+
+<body ng-app="app">
+<div  ng-controller="PostCtrl" class="container">
+    <h1>Recent Posts</h1>
+    <!--//using the ng-click directive that is typically used to call a function on $scope.-->
+    <!--//Right now clicking it will do nothing, but if you add the fucntion, you can add-->
+    <!--//a new post to your list of posts. Add the following line inside your controller:-->
+
+    <button ng-click="addPost()" class='btn btn-default'> Add a New Post!</button>
+    <input ng-model="postBody" class="form-control" />
+    <ul class="list-group">
+        <li ng-repeat="post in posts" class="list-group-item">
+            <strong>{{ post.username }}</strong>
+            <span>{{ post.body }}</span>
+        </li>
+    </ul>
+</div>
+
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js'> </script>
+<script>
+    var app = angular.module('app',[])
+    app.controller('PostCtrl', function($scope){
+        $scope.posts = [
+            {
+                username: 'battler',
+                body: 'sup'
+            },
+            {
+                username: 'maria',
+                body:  'hi'
+            }
+
+        ];
+    });//make sure your app.controller function is wrapped around
+        //your addPost Function it won't work and when angular
+    //tries to read the input it  will say scope is not defined.
+
+    $scope.addPost = function() {
+      if ($scope.postBody) {
+          $scope.posts.unshift({
+              username: 'battler',
+              body: 'test'
+          })
+      };}
+    }
+//    here we are storing the app module into a variable app and then creating a controller on it called PostsCtrl.
+        //one of the issues is that the user can post empty posts. This is not good and we would need to fix that,
+        //simply wra the addPost() logic in the following conditional:
+</script>
+
+</body>
+</html>
